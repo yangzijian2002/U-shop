@@ -1,0 +1,89 @@
+<!-- 大图片 -->
+<swiper circular indicator-dots indicator-active-color="rgba(255,255,255,5)" height="auto" class="pics">
+    <swiper-item
+        wx:for="{{ content.pics }}"
+        wx:key="name"
+    >
+        <image src="{{ item.pics_big }}" mode="widthFix"></image>
+    </swiper-item>
+</swiper>
+<!-- 图片信息 -->
+<view class="content page">
+    <view class="title">
+        ￥{{ content.goods_price }}
+    </view>
+    <view class="details">
+        <view class="name">{{ content.goods_name }}</view>
+        <text class="hr"></text>
+        <view class="collection">
+            <image src="/images/icon/{{ collFlg?'star_active.png':'star.png' }}" mode="widthFix" bindtap="collection"></image>
+            收藏{{ collFLg }}
+        </view>
+    </view>
+    <view class="express">快递：免运费</view>
+</view>
+<!-- 活动、件数 -->
+<view class="choice page">
+    <view class="activity">
+        <view class="smallTitle">促销</view>
+        <view>满300减30元</view>
+    </view>
+    <view class="number">
+        <view class="smallTitle">已选</view>
+        <view>黑色/S/一件</view>
+    </view>
+</view>
+<!-- 收货地址 -->
+<view class="section page">
+    <view class="smallTitle">送至</view>
+    <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+        <text wx:if="{{region.length == 0}}">请选择地址</text>
+        <text wx:else>{{region[0]}}，{{region[1]}}，{{region[2]}}</text>
+    </picker>
+</view>
+<!-- 详细信息 -->
+<view class="introduct page">
+    <view class="introduct_tabbar">
+        <view class="{{active?'active':''}}" data-active="0" bindtap="active">图文介绍</view>
+        <view class="{{active?'':'active'}}" data-active="1" bindtap="active">规格参数</view>
+    </view>
+    <!-- 图文介绍 -->
+    <view hidden="{{!active}}">
+        <rich-text nodes="{{ content.goods_introduce }}"></rich-text>
+    </view>
+    <!-- 规格参数 -->
+    <view hidden="{{active}}" class="specifications">
+        <view class="key">{{content.attrs[0].attr_name}}</view>
+        <view class="value">{{content.attrs[0].attr_write}}</view>
+        <view class="key">{{content.attrs[1].attr_name}}</view>
+        <view class="value">{{content.attrs[1].attr_value}}</view>
+        <view class="key btb">{{content.attrs[2].attr_name}}</view>
+        <view class="value btb">{{content.attrs[2].attr_vals}}</view>
+    </view>
+</view>
+<!-- 底部导航 -->
+<view class="bottomBar">
+    <view class="service">
+        <image src="/images/icon/service.png" mode="heightFix"></image>
+        客服
+    </view>
+    <view class="cart" bindtap="cart">
+        <image src="/images/icon/cart.png" mode="heightFix"></image>
+        购物车
+    </view>
+    <view class="pushCart" bindtap="pushCart" wx:if="">
+        <view>
+            加入购物车    
+        </view>
+    </view>
+    <view class="pushCarted">
+        <view>
+            已加入购物车    
+        </view>
+    </view>
+    <view class="buy">
+        <view>
+            立即购买
+        </view>
+    </view>
+</view>

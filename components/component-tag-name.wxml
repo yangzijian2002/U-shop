@@ -1,0 +1,7 @@
+<!-- 组件模板 -->
+<view class="search">
+  <view class="text" bindtap="search">
+    <icon type="search" color="#bbb" class="icon"></icon>
+    <text>搜索</text>
+  </view>
+</view>

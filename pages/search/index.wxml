@@ -1,0 +1,64 @@
+<view class="control">
+    <!-- 商品搜索 -->
+    <view class="search">
+        <view class="input">
+            <icon type="search" color="#bcbbbc"></icon>
+            <input
+             type="text"
+             placeholder="请输入你想要的商品"
+             value="{{ text }}"
+             focus="{{focu}}"
+             bindinput="text"></input>
+             <!-- 
+             bindfocus="inputFocus"
+             bindblur="inputBlur" -->
+        </view>
+        <view class="btn" hidden="{{!flg}}" bindtap="back">取消</view>
+        <view class="btn btn1" hidden="{{flg}}" bindtap="search">搜索</view>
+    </view>
+    <!-- 历史记录 -->
+    <view class="history" hidden="{{historyFlg}}" bindtap="aa">
+        <view class="title">
+            历史搜索
+            <icon type="cancel" color="#bcbbbc" size="17" bindtap="deHistoryFlg"></icon>
+        </view>
+        <scroll-view style="height: 800rpx">
+            <view class="content">
+                <view
+                wx:for="{{ history }}"
+                wx:key="name"
+                >
+                    <icon type="cancel" size="20" catchtap="delete" data-index="{{index}}" hidden="{{ deHistoryFlg }}"></icon>
+                    <view
+                        capture-catch:tap="hSearch"
+                        data-text="{{ item }}"
+                    >
+                        {{ item }}
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<!-- 搜索列表 -->
+<view class="dataList">
+            <view
+                class="list"
+                wx:for="{{ dataList }}"
+                wx:key="name"
+                bindtap="jump" data-id="{{ item.goods_id }}"
+                >
+                    <view class="image">
+                        <image src="{{item.goods_big_logo}}" mode="widthFix" lazy-load></image>
+                    </view>
+                    <view class="content">
+                        <view class="name">
+                            {{ item.goods_name }}
+                        </view>
+                        <view class="price">
+                            ￥{{ item.goods_price }}
+                        </view>
+                    </view>
+            </view>
+</view>
+<view class="bottom" hidden="{{ lock }}">吖，到底了</view>

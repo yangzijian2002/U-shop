@@ -1,0 +1,13 @@
+.search{
+  background-color: #eb4450;
+  padding: 20rpx 16rpx;
+  position: relative;
+}
+.text{
+  background-color: #fff;
+  height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: #bbb;
+}

@@ -1,0 +1,13 @@
+page{
+    background: #f4f4f4;
+}
+.infomation{
+    background-color: #fff;
+    margin-bottom: 15rpx;
+    position: relative;
+}
+.infomation>image{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}

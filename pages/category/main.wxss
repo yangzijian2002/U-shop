@@ -1,0 +1,69 @@
+/* pages/category/main.wxss */
+.category{
+    display: flex;
+    flex-direction: row;
+}
+.tabbar_box{
+    width: 198rpx;
+}
+.content_box{
+    width: 520rpx;
+    margin: 0 16rpx;
+}
+
+.tabbar>view{
+    position: relative;
+    height: 100rpx;
+    line-height: 100rpx;
+    box-sizing: border-box;
+    text-align: center;
+}
+.default{
+    color: #333;
+    border-top: 1px solid #eee;
+    background-color: #f4f4f4;
+}
+.active{
+    color: #eb4450;
+    font-weight: bold;
+    font-family: "微软雅黑";
+    background-color: #fff;
+    border-top: 1px solid #fff;
+}
+.active>view{
+    position: absolute;
+    top: 20rpx;
+    height: 60rpx;
+    border-left: 8rpx solid #eb4450;
+}
+
+.swiper{
+    height: 100%;
+}
+.content>.title{
+    height: 100rpx;
+    text-align: center;
+    color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content>.title>text{
+    color: #333;
+    margin: 0 30rpx;
+}
+.content>.context{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.content>.context>navigator{
+    width: 33%;
+    text-align: center;
+    color: #333;
+    margin: 5rpx 0;
+}
+.content>.context image{
+    width: 120rpx;
+    height: 12rpx;
+}

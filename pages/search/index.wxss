@@ -1,0 +1,111 @@
+/* pages/search/index.wxss */
+.search,.history.dataList{
+    padding: 0 16rpx;
+}
+.control{
+    /* position: fixed;
+    top: 0; */
+    width: 100%;
+}
+/* 搜索框 */
+.search{
+    background-color: #eee;
+    padding: 20rpx 16rpx;
+    display: flex;
+    justify-content: space-between;
+}
+.search>view{
+    border-radius: 5px;
+    height: 70rpx;
+}
+.search>.input{
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    width: 70%;
+    align-items: center;
+}
+.search>.btn{
+    width: 170rpx;
+    border: 1px solid #d1d1d1;
+    text-align: center;
+    line-height: 70rpx;
+}
+.search>.btn1{
+    background-color: #51aa38;
+    color: #fff;
+}
+/* 历史记录 */
+.history{
+    background-color: #fff;
+}
+.history>.title{
+    height: 70rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16rpx;
+}
+.history .content,.history .content>view{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.history .content>view{
+    background-color: #ddd;
+    padding: 20rpx 30rpx;
+    align-items: center;
+    margin: 20rpx 30rpx;
+    position: relative;
+}
+.history .content>view>icon{
+    position: absolute;
+    right: -20rpx;
+    top: -20rpx;
+    background-color: #eee;
+    border-radius: 50%;
+}
+.history .content>view>view{
+    height: 100%;
+    width: 100%;
+}
+/* 搜索列表 */
+.dataList{
+    /* margin-top: 110rpx; */
+}
+.dataList .list{
+    border-top: 1px solid #ddd;
+    display: flex;
+    flex-direction: row;
+    padding: 20rpx 0;
+}
+.dataList .list>.image{
+    height: 250rpx;
+    width: 300px;
+}
+.dataList .list>.image>image{
+    width: 100%;
+}
+.dataList .list>.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 15rpx;
+}
+.dataList .list>view>.name{
+    height: 120rpx;
+    line-height: 60rpx;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+.dataList .list>view>.price{
+    color: #ea4451;
+    font-size: 50rpx;
+}
+.bottom{
+    color: #ccc;
+    background-color: #f4f4f4;
+    text-align: center;
+    height: 120rpx;
+    line-height: 120rpx;
+}

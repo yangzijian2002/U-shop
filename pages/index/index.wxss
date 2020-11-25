@@ -1,0 +1,49 @@
+.swiper{
+  height: 340rpx;
+}
+.swiper navigator,.swiper image{
+  height: 100%;
+}
+
+.catitems{
+  display: flex;
+  flex-direction: row;
+  height: 194rpx;
+  align-items: center;
+}
+.catitems>navigator{
+  width: 25%;
+  text-align: center;
+}
+.catitems>navigator>image{
+  width: 128rpx;
+  height: 140rpx;
+}
+
+.floor .title{
+  height: 88rpx;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.floor .title>image{
+  height: 70rpx;
+}
+.floor .content{
+  display: flex;
+  flex-direction: row;
+  margin: 20rpx 17rpx;
+}
+.floor .content navigator>image{
+  width: 232rpx;
+}
+.floor .content>view>navigator{
+  margin-left: 10rpx;
+}
+/* .floor .content>view>navigator>image{
+  height: 115px;
+} */
+/* .floor .content>view>navigator:first-child{
+  margin-bottom: 10rpx;
+} */

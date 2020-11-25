@@ -1,0 +1,51 @@
+<search></search>
+<view class="category">
+    <view class="tabbar_box">
+        <scroll-view style="height:{{rpxHeight-90}}rpx;" scroll-y>
+            <view class="tabbar">
+                <view
+                    wx:for="{{ content }}"
+                    wx:key="name"
+                    class="{{ index == num ?'active':'default' }}"
+                    bindtap="switchContent"
+                    data-index="{{ index }}"
+                >
+                    <view></view>
+                    {{ item.cat_name }}
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="content_box">
+            <swiper class="swiper" current="{{ num }}" bindchange="swiperChange">
+                <swiper-item
+                    wx:for="{{ content }}"
+                    wx:key="name"
+                >
+                    <scroll-view style="height:{{rpxHeight-90}}rpx;" scroll-y>
+                    <view
+                        wx:for="{{ item.children }}"
+                        wx:key="name"
+                        wx:for-item="value"
+                        wx:for-index="ind"
+                        class="content"
+                    >
+                        <view class="title">
+                            /<text>{{ value.cat_name }}</text>/
+                        </view>
+                        <view class="context">
+                            <navigator
+                                url="/pages/detail/index?id={{value.children[index].cat_id}}"
+                                wx:for="{{ value.children }}"
+                                wx:key="name"
+                            >
+                                <image src="{{ value.children[index].cat_icon }}" mode="widthFix"></image>
+                                <view>{{ value.children[index].cat_name }}</view>
+                            </navigator>
+                        </view>
+                    </view>
+                    </scroll-view>
+                </swiper-item>
+            </swiper>
+    </view>
+</view>

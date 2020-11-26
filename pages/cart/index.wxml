@@ -1,3 +1,79 @@
-<view class="infomation">
+<view class="infomation page">
+    <view class="man">
+        收货人：<view>杨子剑 <text>123456789 <text class="right">></text></text></view>
+    </view>
+    <view class="address">
+        收货地址：
+        <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+            <text wx:if="{{region.length == 0}}">请选择地址</text>
+            <text wx:else>{{region[0]}}，{{region[1]}}，{{region[2]}}</text>
+        </picker>
+    </view>
     <image src="/images/cart_border@2x.png" mode="widthFix"></image>
+</view>
+<view class="list">
+    <view class="title">
+        <image src="/images/icon/pavilion.png" mode="widthFix"></image>
+        U购生活馆
+    </view>
+    <view
+        wx:for="{{cartArr}}"
+        wx:key="name"
+        class="commodity"
+    >
+        <icon
+          class="icon-small"
+          type="circle"
+          size="23" 
+          bindtap="select" 
+          hidden="{{listFlg[index]}}" 
+          data-index="{{index}}"></icon>
+        <icon
+         class="icon-small" 
+         type="success" 
+         color="#ea4451" 
+         size="23" 
+         bindtap="cancel" 
+         hidden="{{!listFlg[index]}}"
+         data-index="{{index}}"></icon>
+        <view>
+            <image src="{{ item.goods_small_logo }}" mode="scaleToFil"></image>
+            <view>
+                <view class="name">
+                {{ item.goods_name }}
+                </view>
+                <view>
+                    <text>￥{{item.goods_price}}</text>
+                    <view class="number">
+                        <view class="minus">-</view>
+                        <text>{{}}0</text>
+                        <view class="plus">+</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="settlement">
+    <view class="select">
+        <icon 
+         class="icon-small" 
+         type="circle" 
+         size="23"
+         bindtap="selectAll"
+         hidden="{{ allFlg }}"></icon>
+        <icon 
+         class="icon-small" 
+         type="success" 
+         color="#ea4451"
+         size="23"
+         bindtap="cancelAll"
+         hidden="{{ !allFlg }}"></icon>
+        {{ allFlg?'全不选':'全选' }}
+    </view>
+    <view class="price">
+        <text>合计:<text class="pric">￥<text class="pri">{{priceArr[0]}}</text>.{{priceArr[1]}}</text></text>
+        <view>包含运费</view>
+    </view>
+    <view class="btn">结算({{num}})</view>
 </view>

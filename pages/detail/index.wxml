@@ -17,7 +17,7 @@
         <text class="hr"></text>
         <view class="collection">
             <image src="/images/icon/{{ collFlg?'star_active.png':'star.png' }}" mode="widthFix" bindtap="collection"></image>
-            收藏{{ collFLg }}
+            <view>收藏</view>
         </view>
     </view>
     <view class="express">快递：免运费</view>
@@ -71,12 +71,12 @@
         <image src="/images/icon/cart.png" mode="heightFix"></image>
         购物车
     </view>
-    <view class="pushCart" bindtap="pushCart" wx:if="">
+    <view class="pushCart" bindtap="pushCart" wx:if="{{flg}}">
         <view>
             加入购物车    
         </view>
     </view>
-    <view class="pushCarted">
+    <view class="pushCarted" wx:else>
         <view>
             已加入购物车    
         </view>

@@ -92,7 +92,7 @@ Page({
                 that.setData({
                     dataList: res.goods
                 })
-                console.log(res); 
+                // console.log(res); 
             }
         })
         wx.showToast({
@@ -226,8 +226,7 @@ Page({
             api.getDataFn({
                 url: "/api/public/v1/goods/search?query=" + that.data.text + "&pagenum=" + num,
                 success(res){
-                    console.log(res);
-                    console.log(num);
+                    // console.log(res) 
                     
                     if(res.length != 0){
                         arr = that.data.dataList.concat(res.goods);

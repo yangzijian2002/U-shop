@@ -17,35 +17,28 @@
         </scroll-view>
     </view>
     <view class="content_box">
-            <swiper class="swiper" current="{{ num }}" bindchange="swiperChange">
-                <swiper-item
-                    wx:for="{{ content }}"
-                    wx:key="name"
+        <scroll-view style="height:{{rpxHeight-90}}rpx;" scroll-y>
+                <view
+                wx:for="{{ content[num].children }}"
+                wx:key="name"
+                class="content"
                 >
-                    <scroll-view style="height:{{rpxHeight-90}}rpx;" scroll-y>
-                    <view
-                        wx:for="{{ item.children }}"
-                        wx:key="name"
-                        wx:for-item="value"
-                        wx:for-index="ind"
-                        class="content"
-                    >
-                        <view class="title">
-                            /<text>{{ value.cat_name }}</text>/
-                        </view>
-                        <view class="context">
-                            <navigator
-                                url="/pages/detail/index?id={{value.children[index].cat_id}}"
-                                wx:for="{{ value.children }}"
-                                wx:key="name"
-                            >
-                                <image src="{{ value.children[index].cat_icon }}" mode="widthFix"></image>
-                                <view>{{ value.children[index].cat_name }}</view>
-                            </navigator>
-                        </view>
+                    <view class="title">
+                        /<text>{{ item.cat_name }}</text>/
                     </view>
-                    </scroll-view>
-                </swiper-item>
-            </swiper>
+                    <view class="context">
+                        <navigator
+                            wx:for="{{ item.children }}"
+                            wx:key="name"
+                            wx:for-item="value"
+                            wx:for-index="inde"
+                            url="/pages/detail/index?id={{value.cat_id}}"
+                        >
+                            <image src="{{ value.cat_icon }}" mode="widthFix"></image>
+                            <view>{{ value.cat_name }}</view>
+                        </navigator>
+                    </view>
+                </view>
+        </scroll-view>
     </view>
 </view>

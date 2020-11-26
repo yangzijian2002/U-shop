@@ -1,22 +1,24 @@
-<view class="control">
-    <!-- 商品搜索 -->
+<!-- 商品搜索 -->
+<view class="controls controls_one">
     <view class="search">
         <view class="input">
             <icon type="search" color="#bcbbbc"></icon>
             <input
-             type="text"
-             placeholder="请输入你想要的商品"
-             value="{{ text }}"
-             focus="{{focu}}"
-             bindinput="text"></input>
-             <!-- 
-             bindfocus="inputFocus"
-             bindblur="inputBlur" -->
+                type="text"
+                placeholder="请输入你想要的商品"
+                value="{{ text }}"
+                focus="{{focu}}"
+                bindinput="text"
+                bindfocus="inputFocus"
+                bindblur="inputBlur"
+                ></input>
         </view>
         <view class="btn" hidden="{{!flg}}" bindtap="back">取消</view>
         <view class="btn btn1" hidden="{{flg}}" bindtap="search">搜索</view>
     </view>
-    <!-- 历史记录 -->
+</view>
+<!-- 历史记录 -->
+<view class="controls controls_two">
     <view class="history" hidden="{{historyFlg}}" bindtap="aa">
         <view class="title">
             历史搜索
@@ -49,7 +51,7 @@
                 bindtap="jump" data-id="{{ item.goods_id }}"
                 >
                     <view class="image">
-                        <image src="{{item.goods_big_logo}}" mode="widthFix" lazy-load></image>
+                        <image src="{{item.goods_big_logo}}" lazy-load></image>
                     </view>
                     <view class="content">
                         <view class="name">

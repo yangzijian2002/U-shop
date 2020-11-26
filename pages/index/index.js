@@ -68,7 +68,7 @@ Page({
           that.setData({
             floor: res
           })
-          wx.setStorage("indexFloor",res)
+          wx.setStorageSync("indexFloor",res)
         }
       })
     }

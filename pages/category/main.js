@@ -39,7 +39,7 @@ Page({
             })
         }else{
             api.getDataFn({
-                url: "/api/public/v1/categories ",
+                url: "/api/public/v1/categories",
                 success(res){
                     that.setData({
                         content: res

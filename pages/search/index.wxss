@@ -2,10 +2,15 @@
 .search,.history.dataList{
     padding: 0 16rpx;
 }
-.control{
-    /* position: fixed;
-    top: 0; */
+.controls{
+    position: fixed;
     width: 100%;
+}
+.controls_one{
+    top: 0;
+}
+.controls_two{
+    top: 110rpx;
 }
 /* 搜索框 */
 .search{
@@ -71,7 +76,7 @@
 }
 /* 搜索列表 */
 .dataList{
-    /* margin-top: 110rpx; */
+    margin-top: 110rpx;
 }
 .dataList .list{
     border-top: 1px solid #ddd;
@@ -80,11 +85,12 @@
     padding: 20rpx 0;
 }
 .dataList .list>.image{
-    height: 250rpx;
+    height: 125px;
     width: 300px;
 }
 .dataList .list>.image>image{
     width: 100%;
+    height: 100%;
 }
 .dataList .list>.content{
     display: flex;

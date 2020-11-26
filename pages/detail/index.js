@@ -46,10 +46,7 @@ Page({
       this.setData({
         region: e.detail.value
       })
-      wx.setStorage({
-          key: "address",
-          data: e.detail.value
-      })
+      wx.setStorageSync("address",e.detail.value)
     },
     // 显示规格参数和图文介绍
     active(e){
@@ -89,7 +86,10 @@ Page({
                 newarray = arr;
             }
         }
-        wx.setStorageSync("car_arr", newarray)
+        wx.setStorageSync("car_arr", newarray);
+        this.setData({
+            flg: false
+        })
     },
 
     /**
@@ -130,7 +130,9 @@ Page({
         let arr = wx.getStorageSync('car_arr');
         if(arr.length != 0){
             arr.forEach(element => {
-                this.data.cat_id==element?this.setData({flg: false}):"";
+                if(this.data.cat_id==element){
+                    this.setData({flg: false})
+                }
             });   
         }
         // 判断此商品是否收藏

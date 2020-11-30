@@ -1,2 +1,29 @@
-<!--pages/goods_detail/main.wxml-->
-<text>pages/goods_detail/main.wxml</text>
+<!-- 标题 -->
+<view class="title">
+    <view class="active">综合</view>
+    <view>销量</view>
+    <view>价格</view>
+</view>
+<!-- 搜索列表 -->
+<view class="dataList">
+    <view
+        class="list"
+        wx:for="{{ dataList }}"
+        wx:key="name"
+        bindtap="jump" 
+        data-id="{{ item.goods_id }}"
+        >
+            <view class="image">
+                <image src="{{item.goods_big_logo}}" lazy-load></image>
+            </view>
+            <view class="content">
+                <view class="name">
+                    {{ item.goods_name }}
+                </view>
+                <view class="price">
+                    ￥{{ item.goods_price }}
+                </view>
+            </view>
+    </view>
+</view>
+<view class="bottom" hidden="{{ lock }}">吖，到底了</view>

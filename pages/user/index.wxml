@@ -1,0 +1,75 @@
+<!-- 用户信息 -->
+<view class="info">
+    <view class="container" hidden="{{hasUserInfo}}">
+        <image src="/images/portrait.png" mode="widthFix"></image>
+        <view>
+            <button bindtap="getUserIn">登录</button>
+        </view>
+    </view>
+    <view class="container" hidden="{{!hasUserInfo}}">
+        <image src="{{userInfo.avatarUrl}}" mode="widthFix"></image>
+        <view>
+            {{userInfo.nickName}}
+        </view>
+    </view>
+</view>
+<view class="myData page">
+    <view>
+        <navigator>
+            <view>0</view>
+            <text>收藏的店铺</text>
+        </navigator>
+    </view>
+    <view>
+        <navigator>
+            <view>0</view>
+            <text>收藏的商品</text>
+        </navigator>
+    </view>
+    <view>
+        <navigator>
+            <view>0</view>
+            <text>关注的商品</text>
+        </navigator>
+    </view>
+    <view>
+        <navigator>
+            <view>0</view>
+            <text>我的足迹</text>
+        </navigator>
+    </view>
+</view>
+<!-- 订单 -->
+<view class="order page">
+    <view class="title">我的订单</view>
+    <view class="content">
+        <view wx:for="{{ orderData }}" wx:key="name">
+            <navigator>
+                <image src="{{ item.img }}" mode="widthFix"></image>
+                <text>{{item.text}}</text>
+            </navigator>
+        </view>
+    </view>
+</view>
+<!-- 收货地址 -->
+<view class="address page">
+    <navigator url="/pages/address/index">
+        <text>收货地址管理</text>
+        <text class="right">></text>
+    </navigator>
+</view>
+<!-- 其他 -->
+<view class="other page">
+    <view>
+        联系客服
+        <text class="right">400-618-400</text>
+    </view>
+    <view>
+        意见反馈
+        <text class="right">></text>
+    </view>
+    <view>
+        关于我们
+        <text class="right">></text>
+    </view>
+</view>

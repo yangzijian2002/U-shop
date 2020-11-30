@@ -37,6 +37,7 @@ Page({
             this.setData({
                 content: wx.getStorageSync("categories")
             })
+            
         }else{
             api.getDataFn({
                 url: "/api/public/v1/categories",
@@ -45,6 +46,8 @@ Page({
                         content: res
                     })
                     wx.setStorageSync("categories",res)
+                    // console.log(res);
+                    
                 }
             })
         };

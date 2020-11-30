@@ -1,1 +1,57 @@
-/* pages/goods_detail/main.wxss */
+/* 标题 */
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.title>view{
+    width: 33.33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110rpx;
+}
+.active{
+    color: #ea4451;
+}
+/* 搜索列表 */
+.dataList .list{
+    border-top: 1px solid #ddd;
+    display: flex;
+    flex-direction: row;
+    padding: 20rpx 0;
+}
+.dataList .list>.image{
+    flex: 2;
+    height: 125px;
+    width: 300px;
+    overflow: hidden;
+}
+.dataList .list>.image>image{
+    width: 100%;
+    height: 100%;
+}
+.dataList .list>.content{
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 15rpx;
+}
+.dataList .list>view>.name{
+    height: 120rpx;
+    line-height: 60rpx;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+.dataList .list>view>.price{
+    color: #ea4451;
+    font-size: 50rpx;
+}
+.bottom{
+    color: #ccc;
+    background-color: #f4f4f4;
+    text-align: center;
+    height: 120rpx;
+    line-height: 120rpx;
+}

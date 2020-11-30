@@ -42,11 +42,10 @@ Page({
         wx.setStorageSync('collection', arr)
     },
     // 改变收货地址
-    bindRegionChange: function (e) {
-      this.setData({
-        region: e.detail.value
-      })
-      wx.setStorageSync("address",e.detail.value)
+    navigator(e) {
+        wx.navigateTo({
+          url: '/pages/address/index',
+        })
     },
     // 显示规格参数和图文介绍
     active(e){
@@ -102,12 +101,9 @@ Page({
             title: "商品详情"
         })
         // 判断商品id，并根据id请求数据
-        if(options){
+        if(options.id){
             this.data.cat_id = options.id;
-            wx.setStorage({
-                key: 'cat_id',
-                data: options.id
-            })
+            wx.setStorageSync('cat_id' , options.id)
         }else{
             this.setData({
                 cat_id: wx.getStorageSync('cat_id')
@@ -120,10 +116,6 @@ Page({
                     content: res
                 })
             }
-        })
-        // 请求收货地址
-        this.setData({
-            region: wx.getStorageSync("address")
         })
         // 判断商品是否已加入购物车
             // 请求购物车id数组
@@ -160,7 +152,10 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        // 请求收货地址
+        this.setData({
+            region: wx.getStorageSync("address")[0]
+        })
     },
 
     /**

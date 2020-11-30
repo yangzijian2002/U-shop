@@ -117,6 +117,12 @@ page{
 }
 .list>.commodity>view>view>view>.number>text{
     margin: 0 30rpx;
+    width: 60rpx;
+    text-align: center;
+}
+.plusDis,.minusDis{
+    border: 8rpx solid #ddd;
+    color: #ddd;
 }
 /* 结算 */
 .settlement{
@@ -162,4 +168,9 @@ page{
     background-color: #ea4451;
     color: #fff;
     text-align: center;
+}
+/* 空购物车 */
+.empty>image{
+    width: 40%;
+    margin: 200rpx 0 60rpx;
 }

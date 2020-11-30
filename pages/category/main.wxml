@@ -1,5 +1,6 @@
 <search></search>
 <view class="category">
+    <!-- 左侧导航栏 -->
     <view class="tabbar_box">
         <scroll-view style="height:{{rpxHeight-90}}rpx;" scroll-y>
             <view class="tabbar">
@@ -16,29 +17,31 @@
             </view>
         </scroll-view>
     </view>
+    <!-- 右侧内容区 -->
     <view class="content_box">
         <scroll-view style="height:{{rpxHeight-90}}rpx;" scroll-y>
-                <view
-                wx:for="{{ content[num].children }}"
-                wx:key="name"
-                class="content"
-                >
-                    <view class="title">
-                        /<text>{{ item.cat_name }}</text>/
-                    </view>
-                    <view class="context">
-                        <navigator
-                            wx:for="{{ item.children }}"
-                            wx:key="name"
-                            wx:for-item="value"
-                            wx:for-index="inde"
-                            url="/pages/detail/index?id={{value.cat_id}}"
-                        >
-                            <image src="{{ value.cat_icon }}" mode="widthFix"></image>
-                            <view>{{ value.cat_name }}</view>
-                        </navigator>
-                    </view>
+            <image src="/images/titleImage.png" class="titleImage" mode="widthFix"></image>
+            <view
+            wx:for="{{ content[num].children }}"
+            wx:key="name"
+            class="content"
+            >
+                <view class="title">
+                    /<text>{{ item.cat_name }}</text>/
                 </view>
+                <view class="context">
+                    <navigator
+                        wx:for="{{ item.children }}"
+                        wx:key="name"
+                        wx:for-item="value"
+                        wx:for-index="inde"
+                        url="/pages/goods_detail/main?id={{value.cat_id}}"
+                    >
+                        <image src="{{ value.cat_icon }}" mode="widthFix"></image>
+                        <view>{{ value.cat_name }}</view>
+                    </navigator>
+                </view>
+            </view>
         </scroll-view>
     </view>
 </view>

@@ -19,7 +19,7 @@
 </view>
 <!-- 历史记录 -->
 <view class="controls controls_two">
-    <view class="history" hidden="{{historyFlg}}" bindtap="aa">
+    <view class="history" hidden="{{historyFlg}}">
         <view class="title">
             历史搜索
             <icon type="cancel" color="#bcbbbc" size="17" bindtap="deHistoryFlg"></icon>
@@ -44,23 +44,23 @@
 </view>
 <!-- 搜索列表 -->
 <view class="dataList">
-            <view
-                class="list"
-                wx:for="{{ dataList }}"
-                wx:key="name"
-                bindtap="jump" data-id="{{ item.goods_id }}"
-                >
-                    <view class="image">
-                        <image src="{{item.goods_big_logo}}" lazy-load></image>
-                    </view>
-                    <view class="content">
-                        <view class="name">
-                            {{ item.goods_name }}
-                        </view>
-                        <view class="price">
-                            ￥{{ item.goods_price }}
-                        </view>
-                    </view>
+    <view
+        class="list"
+        wx:for="{{ dataList }}"
+        wx:key="name"
+        bindtap="jump" data-id="{{ item.goods_id }}"
+        >
+            <view class="image">
+                <image src="{{item.goods_big_logo}}" lazy-load></image>
             </view>
+            <view class="content">
+                <view class="name">
+                    {{ item.goods_name }}
+                </view>
+                <view class="price">
+                    ￥{{ item.goods_price }}
+                </view>
+            </view>
+    </view>
 </view>
 <view class="bottom" hidden="{{ lock }}">吖，到底了</view>

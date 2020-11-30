@@ -22,6 +22,20 @@ Page({
       })
     }
   },
+  getUserIn(){
+    api.userInfo()
+    wx.getUserInfo({
+      success: res => {
+         this.setData({
+           userInfo: res.userInfo
+         })
+         wx.setStorageSync('userInfo', res.userInfo)
+      },
+      fail: err => {
+        console.log(err);
+      }
+    })
+  },
   onLoad: function () {
     let that = this;
     // 轮播图
@@ -30,14 +44,12 @@ Page({
         swiperImg: wx.getStorageSync('indexSwiperImage')
       })
     }else{
-      api.getDataFn({
-        url: "/api/public/v1/home/swiperdata",
-        success(res){
-          that.setData({
-            swiperImg: res
-          })
-          wx.setStorageSync("indexSwiperImage", res)
-        }
+      api.request({url: "/api/public/v1/home/swiperdata",method: "GET"})
+      .then(res => {
+        that.setData({
+          swiperImg: res
+        })
+        wx.setStorageSync("indexSwiperImage", res)
       })
     }
     // 分类列表
@@ -46,14 +58,12 @@ Page({
         catitems: wx.getStorageSync('indexCatitems')
       })
     }else{
-      api.getDataFn({
-        url: "/api/public/v1/home/catitems",
-        success(res){
-          that.setData({
-            catitems: res
-          })
-          wx.setStorageSync("indexCatitems",res)
-        }
+      api.request({url: "/api/public/v1/home/catitems",method: "GET"})
+      .then(res => {
+        that.setData({
+          catitems: res
+        })
+        wx.setStorageSync("indexCatitems",res)
       })
     }
     // 楼层
@@ -62,52 +72,14 @@ Page({
         floor: wx.getStorageSync('indexFloor')
       })
     }else{
-      api.getDataFn({
-        url: "/api/public/v1/home/floordata",
-        success(res){
-          that.setData({
-            floor: res
-          })
-          wx.setStorageSync("indexFloor",res)
-        }
-      })
-    }
-
-
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+      api.request({url: "/api/public/v1/home/floordata",method: "GET"})
+      .then(res => {
+        that.setData({
+          floor: res
         })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
+        wx.setStorageSync("indexFloor",res)
       })
     }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作

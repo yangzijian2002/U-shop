@@ -107,6 +107,15 @@ page{
     flex-direction: row;
     padding: 16rpx 0;
 }
+.section>view{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.section>view>text{
+    font-size: 30rpx;
+}
+/* 信息 */
 .introduct{
     margin-bottom: 100rpx;
 }

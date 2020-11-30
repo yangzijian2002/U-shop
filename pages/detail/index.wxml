@@ -36,10 +36,10 @@
 <!-- 收货地址 -->
 <view class="section page">
     <view class="smallTitle">送至</view>
-    <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
-        <text wx:if="{{region.length == 0}}">请选择地址</text>
-        <text wx:else>{{region[0]}}，{{region[1]}}，{{region[2]}}</text>
-    </picker>
+    <view bindtap="navigator">
+        <view>{{region[0]}}>{{region[1]}}>{{region[2]}}</view>
+        <text>{{region[3]}}</text>
+    </view>
 </view>
 <!-- 详细信息 -->
 <view class="introduct page">

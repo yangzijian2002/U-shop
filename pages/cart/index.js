@@ -6,6 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        flg: false,
         region: [],
         cartArrId: [],
         cartArr: [],
@@ -13,7 +14,8 @@ Page({
         num: 0,
         allFlg: false,
         price: 0,
-        priceArr: [0,"00"]
+        priceArr: [0,"00"],
+        numArr: []
     },
     // 改变收货地址
     bindRegionChange: function (e) {
@@ -94,10 +96,11 @@ Page({
     price(){
         let list = this.data.listFlg;
         let cart = this.data.cartArr;
+        let num = this.data.numArr;
         let price = 0;
         list.forEach((element,index) => {
             if(element){
-                price += cart[index].goods_price;
+                price += (cart[index].goods_price * num[index]);
             }
         })
         let arr = price.toFixed(2).toString().split(".");
@@ -107,7 +110,7 @@ Page({
         })
         
     },
-    // 选中商品数量
+    // 选中商品种类数
     number(){
         let num = 0;
         let arr = this.data.listFlg;
@@ -117,6 +120,32 @@ Page({
         this.setData({
             num: num
         })
+    },
+    // 选中商品数量增加
+    plus(e){
+        let index = e.currentTarget.dataset.index;
+        let numArr = this.data.numArr;
+        numArr[index]++;
+        if(numArr[index] < 100){
+            this.setData({
+                numArr: numArr
+            })
+            this.price();
+        }
+    },
+    // 选中商品数量减少
+    minus(e){
+        let index = e.currentTarget.dataset.index;
+        let numArr = this.data.numArr;
+        numArr[index]--;
+        if(numArr[index] > 0){
+            this.setData({
+                numArr: numArr
+            })
+            this.price();
+        }else{
+            numArr[index] = 1
+        }
     },
     /**
      * 生命周期函数--监听页面加载
@@ -132,10 +161,10 @@ Page({
         })
         // 请求购物车id数组
         let arr = wx.getStorageSync('car_arr');
+        this.setData({
+            cartArrId: arr
+        })
         if(arr.length != 0){
-            this.setData({
-                cartArrId: arr
-            })
             // 请求购物车数据
             api.getDataFn({
                 url: "/api/public/v1/goods/goodslist?goods_ids=" + this.data.cartArrId,
@@ -146,12 +175,26 @@ Page({
                     })
                 }
             })
+            // 商品选中依据
             let arrFlg = [];
             arr.forEach((element,index) => {
                 arrFlg[index] = false;
             });
             this.setData({
                 listFlg: arrFlg
+            })
+            // 商品数量
+            let arrNum = [];
+            arr.forEach((element,index) => {
+                arrNum[index] = 1;
+            });
+            this.setData({
+                numArr: arrNum,
+                flg: false
+            })
+        }else{
+            this.setData({
+                flg: true 
             })
         }
     },
@@ -189,7 +232,6 @@ Page({
      */
     onPullDownRefresh: function () {
         this.onLoad();
-        console.log("aa");
     },
 
     /**

@@ -1,0 +1,27 @@
+<view hidden="{{address.length != 0}}">暂无地址</view>
+<view class="address">
+    <view
+     wx:for="{{address}}"
+     wx:key="name"
+    >
+        <view class="add">
+            {{item[0]}}>{{item[1]}}>{{item[2]}}
+            <view>{{item[3]}}</view>
+        </view>
+        <view class="controls">
+            <text style="color: green;" hidden="{{index == 0}}" data-index="{{index}}" bindtap="active">使用</text>
+            <text style="color: red;" data-index="{{index}}" bindtap="detlete">删除</text>
+        </view>
+    </view>
+</view>
+<view class="push">
+    <view>
+        <picker mode="region" value="{{region}}" bindchange="bindRegionChange">
+            <view class="picker">
+            {{region[0]}}，{{region[1]}}，{{region[2]}}
+            </view>
+        </picker>
+        <textarea cols="10" rows="2" placeholder="详细地址" bindinput="detailed"></textarea>
+    </view>
+    <text bindtap="push">添加</text>
+</view>

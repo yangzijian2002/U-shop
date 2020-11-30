@@ -1,0 +1,52 @@
+page{
+    background-color: #f4f4f4;
+}
+.address{
+    padding: 20rpx 16rpx;
+    margin-bottom: 100rpx;
+}
+.address>view{
+    margin: 20rpx 0;
+}
+.address>view>.controls{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.address>view>.controls>text{
+    text-decoration: underline;
+}
+.address>view,.push{
+    width: 100%;
+    padding: 20rpx 0;
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff;
+}
+.push{
+    position: fixed;
+    bottom: 0;
+}
+.address>view>.add,.push>view{
+    float: 5px;
+    width: 70%;
+    padding-left: 16rpx;
+    color: #bbb;
+}
+.push>view .picker{
+    height: 60rpx;
+}
+.push>view>textarea{
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.push>text{
+    flex: 4;
+    white-space: nowrap;
+    margin-right: 30rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

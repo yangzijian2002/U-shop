@@ -16,6 +16,7 @@ Page({
         deHistoryFlg: true,
         dataList: [],
         pages : 1,
+        max: null,
         lock: true
     },
     // 页面回退
@@ -87,10 +88,12 @@ Page({
         })
         // 请求数据
         api.getDataFn({
-            url: "/api/public/v1/goods/search?query=" + that.data.text,
+            url: "/api/public/v1/goods/search?query=" + that.data.text + "&pagesize=10&pagenum=1",
             success(res){
+                let max = Math.ceil(res.total / 10);
                 that.setData({
-                    dataList: res.goods
+                    dataList: res.goods,
+                    max: max
                 })
                 // console.log(res); 
             }
@@ -124,9 +127,6 @@ Page({
         wx.setStorageSync('searchHisory', history);
         
     },
-    aa(){
-        
-    },
     // 使用历史记录
     hSearch(e){
         
@@ -147,7 +147,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let that = this;
+
         // 设置页面标题
         wx.setNavigationBarTitle({
             title: "商品搜索"
@@ -161,18 +161,19 @@ Page({
         }
         // 获取页面宽高
         wx.getSystemInfo({
-            success: function(res){
+            success: res => {
                 let clientHeight = res.windowHeight;
                 let clientWidth = res.windowWidth;
                 let ratio = 750 / clientWidth;
                 let rpxHeight = clientHeight * ratio;
                 let rpxWidth = clientWidth *ratio;
-                that.setData({
+                this.setData({
                     rpxHeight: rpxHeight,
                     rpxWidth: rpxWidth
                 })
             }
         })
+        
     },
 
     /**
@@ -215,35 +216,33 @@ Page({
      */
     onReachBottom: function () {
         // 上拉触底之后继续获取数据
-        let that = this;
-        if(this.data.lock){
-            let num = this.data.pages;
+        
+        let num = this.data.pages;
+        if(num <= this.data.max-1){
             num++;
             this.setData({
                 pages: num
             })
             let arr = [];
-            api.getDataFn({
-                url: "/api/public/v1/goods/search?query=" + that.data.text + "&pagenum=" + num,
-                success(res){
-                    // console.log(res) 
-                    
-                    if(res.length != 0){
-                        arr = that.data.dataList.concat(res.goods);
-                        that.setData({
-                            dataList: arr
-                        })
-                    }else{
-                        that.setData({
-                            lock: false
-                        })
-                    }
-                }
+            api.request({
+                url: "/api/public/v1/goods/search?query=" + this.data.text + "&pagenum=" + num + "&pagesize=10",
+                method: "GET"
+            })
+            .then(res => {
+                arr = this.data.dataList.concat(res.data.message.goods);
+                this.setData({
+                    dataList: arr
+                })
             })
             wx.showToast({
                 title: '加载中',
                 icon: 'loading',
-                duration: 4000
+                duration: 2800
+            })
+            
+        }else{
+            this.setData({
+                lock: false
             })
         }
     },

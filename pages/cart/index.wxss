@@ -21,13 +21,30 @@ page{
     display: flex;
     position: relative;
 }
-.infomation>view>view>text{
+.infomation>.man>view>text{
     position: absolute;
     right: 0;
     top: 0;
 }
 .right{
     color: #ccc;
+}
+.address{
+    display: flex;
+    flex-direction: row;
+    padding: 16rpx 0;
+}
+.address>view{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.address>.cont{
+    color: #666;
+}
+.address>.cont>text{
+    font-size: 30rpx;
 }
 /* 商品列表 */
 .list{
@@ -46,6 +63,7 @@ page{
     margin-right: 12rpx;
     width: 44rpx;
 }
+
 .list>.commodity{
     height: 246rpx;
     display: flex;
@@ -57,39 +75,32 @@ page{
 .list>.commodity>icon{
     margin: 0 30rpx;
 }
-    /* 商品信息 */
 .list>.commodity>view{
-    height: 100%;
-    border-top: 1px solid #ddd;
-    box-sizing: border-box;
     display: flex;
-    align-items: center;
+    position: relative;
+    width: 100%;
 }
-        /* 商品图片 */
+/* 商品信息 */
 .list>.commodity>view>image{
-    width: 160px;
-    height: 160rpx;
-    margin-right: 20rpx;
+    width: 160rpx;
 }
 .list>.commodity>view>view{
-    height: 100%;
+    width: 400rpx;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-right: 18rpx;
-    position: relative;
 }
-            /* 商品名称 */
+/* 商品名字 */
 .list>.commodity>view>view>.name{
-    height: 103rpx;
-    margin-top: 20rpx;
+    height: 90rpx;
 	overflow: hidden;
-	text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    margin-bottom: 40rpx;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
 }
-                /* 商品价格与数量 */
+/*  */
 .list>.commodity>view>view>view,.list>.commodity>view>view>view>.number{
     display: flex;
     flex-direction: row;
@@ -103,10 +114,11 @@ page{
     color: #ea4451;
     font-size: 50rpx;
 }
+/* 数量 */
 .list>.commodity>view>view>view>.number{
     position: absolute;
-    right: 20rpx;
-    bottom: 20rpx;
+    right: 10rpx;
+    bottom: 10rpx;
 }
 .list>.commodity>view>view>view>.number>view{
     height: 50rpx;
@@ -116,8 +128,7 @@ page{
     font-weight: bold;
 }
 .list>.commodity>view>view>view>.number>text{
-    margin: 0 30rpx;
-    width: 60rpx;
+    width: 50rpx;
     text-align: center;
 }
 .plusDis,.minusDis{

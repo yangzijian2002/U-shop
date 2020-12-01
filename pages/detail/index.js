@@ -109,13 +109,12 @@ Page({
                 cat_id: wx.getStorageSync('cat_id')
             })
         }
-        api.getDataFn({
-            url: "/api/public/v1/goods/detail?goods_id=" + that.data.cat_id,
-            success(res){
-                that.setData({
-                    content: res
-                })
-            }
+        api.request({url: "/api/public/v1/goods/detail?goods_id=" + that.data.cat_id,method: "GET"})
+        .then(res => {
+            that.setData({
+                content: res.data.message
+            })
+            
         })
         // 判断商品是否已加入购物车
             // 请求购物车id数组

@@ -10,7 +10,7 @@
         </view>
         <view class="controls">
             <text style="color: green;" hidden="{{index == 0}}" data-index="{{index}}" bindtap="active">使用</text>
-            <text style="color: red;" data-index="{{index}}" bindtap="detlete">删除</text>
+            <text style="color: red;" data-index="{{index}}" bindtap="delete">删除</text>
         </view>
     </view>
 </view>

@@ -87,16 +87,15 @@ Page({
             history: arr
         })
         // 请求数据
-        api.getDataFn({
-            url: "/api/public/v1/goods/search?query=" + that.data.text + "&pagesize=10&pagenum=1",
-            success(res){
-                let max = Math.ceil(res.total / 10);
-                that.setData({
-                    dataList: res.goods,
-                    max: max
-                })
-                // console.log(res); 
-            }
+        api.request({url: "/api/public/v1/goods/search?query=" + that.data.text + "&pagesize=10&pagenum=1",method: "GET"})
+        .then(res => {
+            let max = Math.ceil(res.data.message.total / 10);
+            that.setData({
+                dataList: res.data.message.goods,
+                max: max
+            })
+            console.log(res);
+            
         })
         wx.showToast({
             title: '加载中',

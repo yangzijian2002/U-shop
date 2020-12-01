@@ -17,13 +17,6 @@ Page({
         priceArr: [0,"00"],
         numArr: []
     },
-    // 改变收货地址
-    bindRegionChange: function (e) {
-      this.setData({
-        region: e.detail.value
-      })
-      wx.setStorageSync("address",e.detail.value)
-    },
     // 选中商品
     select(e){
         let index = e.currentTarget.dataset.index;
@@ -157,7 +150,7 @@ Page({
         })
         // 请求收货地址
         this.setData({
-            region: wx.getStorageSync("address")
+            region: wx.getStorageSync("address")[0]
         })
         // 请求购物车id数组
         let arr = wx.getStorageSync('car_arr');
@@ -166,14 +159,13 @@ Page({
         })
         if(arr.length != 0){
             // 请求购物车数据
-            api.getDataFn({
-                url: "/api/public/v1/goods/goodslist?goods_ids=" + this.data.cartArrId,
-                success:res => {
-                    // console.log(res);
-                    this.setData({
-                        cartArr: res
-                    })
-                }
+            api.request({url: "/api/public/v1/goods/goodslist?goods_ids=" + this.data.cartArrId,method: "GET"})
+            .then(res => {
+                this.setData({
+                    cartArr: res.data.message
+                })
+                // console.log(res);
+                
             })
             // 商品选中依据
             let arrFlg = [];

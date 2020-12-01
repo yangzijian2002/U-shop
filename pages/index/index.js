@@ -47,9 +47,9 @@ Page({
       api.request({url: "/api/public/v1/home/swiperdata",method: "GET"})
       .then(res => {
         that.setData({
-          swiperImg: res
+          swiperImg: res.data.message
         })
-        wx.setStorageSync("indexSwiperImage", res)
+        wx.setStorageSync("indexSwiperImage", res.data.message)
       })
     }
     // 分类列表
@@ -61,9 +61,9 @@ Page({
       api.request({url: "/api/public/v1/home/catitems",method: "GET"})
       .then(res => {
         that.setData({
-          catitems: res
+          catitems: res.data.message
         })
-        wx.setStorageSync("indexCatitems",res)
+        wx.setStorageSync("indexCatitems",res.data.message)
       })
     }
     // 楼层
@@ -75,9 +75,9 @@ Page({
       api.request({url: "/api/public/v1/home/floordata",method: "GET"})
       .then(res => {
         that.setData({
-          floor: res
+          floor: res.data.message
         })
-        wx.setStorageSync("indexFloor",res)
+        wx.setStorageSync("indexFloor",res.data.message)
       })
     }
   },

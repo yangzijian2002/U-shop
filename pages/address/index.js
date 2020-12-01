@@ -51,7 +51,13 @@ Page({
     },
     // 删除地址
     delete(e){
-
+        let index = e.currentTarget.dataset.index;
+        let address =  this.data.address;
+        let add = address.splice(index,1);
+        this.setData({
+            address: address
+        });
+        wx.setStorageSync('address', address)
     },
 
     /**
